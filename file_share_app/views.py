@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from django.views import View
 
+from .models import UploadedFile
+from .forms import UploadFileForm
+
 
 class BaseView(View):
     pass
@@ -25,7 +28,10 @@ class AdminView(ProtectedView):
 class UploadFileView(BaseView):
 
     def get(self, request):
-        return render(request, 'file_explorer/upload.html')
+        context = {
+            'form': UploadFileForm()
+        }
+        return render(request, 'file_explorer/upload.html', context=context)
 
 
 class GetFileView(BaseView):
