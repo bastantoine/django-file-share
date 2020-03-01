@@ -10,3 +10,10 @@ class UploadedFile(models.Model):
     limit_time = models.DateField()
     uuid = models.UUIDField(default=uuid.uuid4)
     available = models.BooleanField(default=True)
+
+    def __str__(self):
+        return '"%s" (password:%s, available:%s)' % (
+            self.uploaded_file.name,
+            str(bool(str(self.password) != '')),
+            str(self.available)
+        )
