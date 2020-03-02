@@ -2,5 +2,9 @@
 {% block title_page %}Upload file{% endblock %}
 {% block body %}
 Upload file<br/>
-{{form}}
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit">Upload</button>
+</form>
 {% endblock %}

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import View
 
 from .models import UploadedFile
@@ -33,6 +33,11 @@ class UploadFileView(BaseView):
         }
         return render(request, 'file_explorer/upload.html', context=context)
 
+    def post(self, request):
+        form = UploadFileForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+        return redirect('file_explorer:home')
 
 class GetFileView(BaseView):
 
