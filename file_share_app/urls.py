@@ -7,6 +7,8 @@ from .views import (
     UploadFileView
 )
 
+app_name = 'file_explorer'
+
 urlpatterns = [
     path('', HomeView.as_view(), name='home'),
     path('admin', AdminView.as_view(), name='admin'),
