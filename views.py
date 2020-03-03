@@ -22,7 +22,10 @@ class HomeView(BaseView):
 class AdminView(ProtectedView):
 
     def get(self, request):
-        return render(request, 'file_explorer/admin.html')
+        context = {
+            'all_files': UploadedFile.objects.filter(available__exact=True)
+        }
+        return render(request, 'file_explorer/admin.html', context=context)
 
 
 class UploadFileView(BaseView):

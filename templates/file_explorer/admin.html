@@ -1,5 +1,9 @@
 {% extends 'file_explorer/base.html' %}
+{% load static %}
 {% block title_page %}Admin{% endblock %}
 {% block body %}
 Admin
+{% for file in all_files %}
+<a href="{{ file.uploaded_file.url }}">{{file.uploaded_file.name}}</a><br/>
+{% endfor %}
 {% endblock %}
