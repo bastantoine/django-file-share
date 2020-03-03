@@ -19,8 +19,9 @@ class UploadedFile(models.Model):
     available = models.BooleanField(default=True)
 
     def __str__(self):
-        return '"%s" (password:%s, available:%s)' % (
+        return '%s (%s, password:%s, available:%s)' % (
+            self.filename,
             self.uploaded_file.name,
-            str(bool(str(self.password) != '')),
+            str(bool(self.password != '')),
             str(self.available)
         )
