@@ -11,20 +11,16 @@ Admin
             <th>File</th>
             <th>Size</th>
             <th>Upload date</th>
+            <th>Limit date</th>
         </tr>
     </thead>
     <tbody>
         {% for file in all_files %}
             <tr>
-                <td>
-                    <a href="{% url 'file_explorer:get' file.uuid %}">{{file.filename}}</a><br/>
-                </td>
-                <td>
-                    {{ file.uploaded_file.size | human_size }}
-                </td>
-                <td>
-                    {{ file.upload_datetime | naturaltime }}
-                </td>
+                <td><a href="{% url 'file_explorer:get' file.uuid %}">{{file.filename}}</a><br/></td>
+                <td>{{ file.uploaded_file.size | human_size }}</td>
+                <td>{{ file.upload_datetime | naturaltime }}</td>
+                <td>{{ file.limit_time }}</td>
             </tr>
         {% endfor %}
     </tbody>
