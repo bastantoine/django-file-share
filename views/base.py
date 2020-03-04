@@ -6,7 +6,7 @@
 # Date last modified :
 # Python Version     : 3.*
 
-from django.view import View
+from django.views import View
 
 
 class BaseView(View):

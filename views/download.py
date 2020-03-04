@@ -15,7 +15,7 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from django.conf import settings
 
-from .models import UploadedFile
+from ..models import UploadedFile
 from .base import BaseView
 
 

@@ -8,7 +8,7 @@
 
 from django.shortcuts import render
 
-from .forms import UploadFileForm
+from ..forms import UploadFileForm
 from .base import BaseView
 
 
