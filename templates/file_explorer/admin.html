@@ -4,6 +4,6 @@
 {% block body %}
 Admin
 {% for file in all_files %}
-<a href="{% url 'file_explorer:get' file.uuid %}">{{file.uploaded_file.name}}</a><br/>
+<a href="{% url 'file_explorer:get' file.uuid %}">{{file.filename}}</a><br/>
 {% endfor %}
 {% endblock %}
