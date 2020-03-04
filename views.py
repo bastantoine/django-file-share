@@ -87,7 +87,7 @@ class GetFileView(BaseView):
 
     def get_file(self, uuid):
         file = get_object_or_404(UploadedFile, uuid__exact=uuid)
-        if file.limit_time != datetime.datetime.now():
+        if datetime.date.today() > file.limit_time:
             return None
         return file
 
