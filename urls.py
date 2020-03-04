@@ -1,3 +1,11 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+# File name          :
+# Author             :
+# Date created       :
+# Date last modified :
+# Python Version     : 3.*
+
 from django.urls import path
 from django.conf.urls.static import static
 from django.conf import settings
@@ -19,4 +27,4 @@ urlpatterns = [
 ]
 
 if settings.DEBUG:
-    urlpatterns+= static(settings.UPLOAD_URL, document_root=settings.UPLOAD_ROOT)
+    urlpatterns += static(settings.UPLOAD_URL, document_root=settings.UPLOAD_ROOT)

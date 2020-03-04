@@ -1,3 +1,11 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+# File name          :
+# Author             :
+# Date created       :
+# Date last modified :
+# Python Version     : 3.*
+
 import mimetypes
 import os
 
@@ -66,7 +74,7 @@ class GetFileView(BaseView):
             mimetype = 'application/octet-stream'
         response = HttpResponse(
             file.uploaded_file.read(),
-            content_type=mimetype,
+            content_type = mimetype,
         )
         response['Content-Disposition'] = 'attachment; filename="%s"' % file.filename
         return response
