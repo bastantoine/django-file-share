@@ -6,7 +6,7 @@
 # Date last modified :
 # Python Version     : 3.*
 
-from .admin import AdminView
+from .admin import AdminView, DeleteFileView
 from .download import GetFileView
 from .upload import UploadFileView
 from .home import HomeView

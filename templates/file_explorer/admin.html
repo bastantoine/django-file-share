@@ -21,6 +21,7 @@ Admin
                 <td>{{ file.uploaded_file.size | human_size }}</td>
                 <td>{{ file.upload_datetime | naturaltime }}</td>
                 <td>{{ file.limit_time }}</td>
+                <td><a href="{% url 'file_explorer:delete' file.uuid %}">Delete</a></td>
             </tr>
         {% endfor %}
     </tbody>

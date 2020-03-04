@@ -14,7 +14,8 @@ from .views import (
     HomeView,
     GetFileView,
     AdminView,
-    UploadFileView
+    DeleteFileView,
+    UploadFileView,
 )
 
 app_name = 'file_explorer'
@@ -24,6 +25,7 @@ urlpatterns = [
     path('admin', AdminView.as_view(), name='admin'),
     path('upload', UploadFileView.as_view(), name='upload'),
     path('l/<uuid:uuid>', GetFileView.as_view(), name='get'),
+    path('delete/<uuid:uuid>', DeleteFileView.as_view(), name='delete'),
 ]
 
 if settings.DEBUG:
