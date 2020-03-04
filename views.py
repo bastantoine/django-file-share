@@ -58,8 +58,7 @@ class GetFileView(BaseView):
         mime = magic.from_file(file_path, mime=True)
         return (mime, encoding)
 
-    def get(self, request, uuid):
-        file = get_object_or_404(UploadedFile, uuid__exact=uuid)
+    def get_response_from_file(self, file):
         mimetype, encoding = self.guess_mime_type_encoding(
             os.path.join(settings.UPLOAD_ROOT, file.uploaded_file.name)
         )
@@ -71,3 +70,17 @@ class GetFileView(BaseView):
         )
         response['Content-Disposition'] = 'attachment; filename="%s"' % file.filename
         return response
+
+    def get(self, request, uuid):
+        file = get_object_or_404(UploadedFile, uuid__exact=uuid)
+        if file.password:
+            return render(request, 'file_explorer/file_login.html')
+        return self.get_response_from_file(file)
+
+    def post(self, request, uuid):
+        file = get_object_or_404(UploadedFile, uuid__exact=uuid)
+        if file.password:
+            if (not request.POST or not request.POST.get('password') or
+                not file.password == request.POST.get('password')):
+                return render(request, 'file_explorer/file_login.html')
+        return self.get_response_from_file(file)

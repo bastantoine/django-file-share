@@ -1,0 +1,10 @@
+{% extends 'file_explorer/base.html' %}
+{% block title_page %}File protected{% endblock %}
+{% block body %}
+File is protected by password
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="password" name="password" id="password">
+    <button type="submit">Upload</button>
+</form>
+{% endblock body %}
