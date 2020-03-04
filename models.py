@@ -18,11 +18,12 @@ class UploadedFile(models.Model):
         max_length = 100,
         storage    = upload_storage
     )
-    filename    = models.CharField(max_length=100)
-    password    = models.CharField(max_length=20, blank=True)
-    limit_time  = models.DateField()
-    uuid        = models.UUIDField(default=uuid.uuid4)
-    available   = models.BooleanField(default=True)
+    filename = models.CharField(max_length=100)
+    password = models.CharField(max_length=20, blank=True)
+    limit_time = models.DateField()
+    uuid = models.UUIDField(default=uuid.uuid4)
+    available = models.BooleanField(default=True)
+    upload_datetime = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return '%s (%s, password:%s, available:%s)' % (
