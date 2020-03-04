@@ -1,0 +1,6 @@
+{% extends 'file_explorer/base.html' %}
+{% block title_page %}Upload successful{% endblock %}
+{% block body %}
+Upload successful!<br/>
+Your file is acessible here: <a href="{% url 'file_explorer:get' uuid %}">{% url 'file_explorer:get' uuid %}</a>
+{% endblock body %}

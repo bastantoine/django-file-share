@@ -56,7 +56,12 @@ class UploadFileView(BaseView):
             uploaded_file = form.save(commit=False)
             uploaded_file.filename = request.FILES['uploaded_file'].name
             uploaded_file.save()
-        return redirect('file_explorer:home')
+            context = {
+                'uuid': uploaded_file.uuid
+            }
+            return render(request, 'file_explorer/upload_successful.html', context=context)
+        else:
+            return render(request, 'file_explorer/upload_error.html')
 
 class GetFileView(BaseView):
 
