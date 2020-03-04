@@ -1,9 +1,32 @@
 {% extends 'file_explorer/base.html' %}
 {% load static %}
+{% load humanize %}
+{% load utils %}
 {% block title_page %}Admin{% endblock %}
 {% block body %}
 Admin
-{% for file in all_files %}
-<a href="{% url 'file_explorer:get' file.uuid %}">{{file.filename}}</a><br/>
-{% endfor %}
+<table>
+    <thead>
+        <tr>
+            <th>File</th>
+            <th>Size</th>
+            <th>Upload date</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for file in all_files %}
+            <tr>
+                <td>
+                    <a href="{% url 'file_explorer:get' file.uuid %}">{{file.filename}}</a><br/>
+                </td>
+                <td>
+                    {{ file.uploaded_file.size | human_size }}
+                </td>
+                <td>
+                    {{ file.upload_datetime | naturaltime }}
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
 {% endblock %}
