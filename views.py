@@ -79,7 +79,7 @@ class GetFileView(BaseView):
             mimetype = 'application/octet-stream'
         response = HttpResponse(
             file.uploaded_file.read(),
-            content_type = mimetype,
+            content_type=mimetype,
         )
         response['Content-Disposition'] = 'attachment; filename="%s"' % file.filename
         return response

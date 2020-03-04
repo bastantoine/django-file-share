@@ -13,10 +13,10 @@ from .storage import upload_storage
 
 class UploadedFile(models.Model):
 
-    uploaded_file  = models.FileField(
-        upload_to  = 'upload/%Y/%m/%d/',
-        max_length = 100,
-        storage    = upload_storage
+    uploaded_file = models.FileField(
+        upload_to='upload/%Y/%m/%d/',
+        max_length=100,
+        storage=upload_storage
     )
     filename = models.CharField(max_length=100)
     password = models.CharField(max_length=20, blank=True)
