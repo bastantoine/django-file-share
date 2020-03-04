@@ -45,7 +45,9 @@ class UploadFileView(BaseView):
     def post(self, request):
         form = UploadFileForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            uploaded_file = form.save(commit=False)
+            uploaded_file.filename = request.FILES['uploaded_file'].name
+            uploaded_file.save()
         return redirect('file_explorer:home')
 
 class GetFileView(BaseView):
