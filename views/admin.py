@@ -6,6 +6,8 @@
 # Date last modified :
 # Python Version     : 3.*
 
+from django.shortcuts import render
+
 from .base import BaseView
 
 

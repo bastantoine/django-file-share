@@ -6,6 +6,16 @@
 # Date last modified :
 # Python Version     : 3.*
 
+import mimetypes
+import os
+import datetime
+import magic
+
+from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponse
+from django.conf import settings
+
+from .models import UploadedFile
 from .base import BaseView
 
 

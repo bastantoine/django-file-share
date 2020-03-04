@@ -6,6 +6,9 @@
 # Date last modified :
 # Python Version     : 3.*
 
+from django.shortcuts import render
+
+from .forms import UploadFileForm
 from .base import BaseView
 
 
