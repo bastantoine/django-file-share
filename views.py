@@ -8,6 +8,7 @@
 
 import mimetypes
 import os
+import datetime
 
 import magic
 from django.shortcuts import render, redirect, get_object_or_404
@@ -84,14 +85,24 @@ class GetFileView(BaseView):
         response['Content-Disposition'] = 'attachment; filename="%s"' % file.filename
         return response
 
-    def get(self, request, uuid):
+    def get_file(self, uuid):
         file = get_object_or_404(UploadedFile, uuid__exact=uuid)
+        if file.limit_time != datetime.datetime.now():
+            return None
+        return file
+
+    def get(self, request, uuid):
+        file = self.get_file(uuid)
+        if not file:
+            return render(request, 'file_explorer/file_out_of_date.html')
         if file.password:
             return render(request, 'file_explorer/file_login.html')
         return self.get_response_from_file(file)
 
     def post(self, request, uuid):
-        file = get_object_or_404(UploadedFile, uuid__exact=uuid)
+        file = self.get_file(uuid)
+        if not file:
+            return render(request, 'file_explorer/file_out_of_date.html')
         if file.password:
             if (not request.POST or not request.POST.get('password') or
                 not file.password == request.POST.get('password')):
