@@ -10,13 +10,18 @@ import os
 
 from django.shortcuts import render, get_object_or_404, redirect
 from django.conf import settings
+from django.utils.decorators import method_decorator
 
 from .base import BaseView
 from ..models import UploadedFile
+from ..utils import requires_auth
 
 
 class ProtectedView(BaseView):
-    pass
+    
+    @method_decorator(requires_auth)
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
 
 
 class AdminView(ProtectedView):
