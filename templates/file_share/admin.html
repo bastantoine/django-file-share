@@ -1,4 +1,4 @@
-{% extends 'file_explorer/base.html' %}
+{% extends 'file_share/base.html' %}
 {% load static %}
 {% load humanize %}
 {% load utils %}
@@ -17,11 +17,11 @@ Admin
     <tbody>
         {% for file in all_files %}
             <tr>
-                <td><a href="{% url 'file_explorer:get' file.uuid %}">{{file.filename}}</a><br/></td>
+                <td><a href="{% url 'file_share:get' file.uuid %}">{{file.filename}}</a><br/></td>
                 <td>{{ file.uploaded_file.size | human_size }}</td>
                 <td>{{ file.upload_datetime | naturaltime }}</td>
                 <td>{{ file.limit_time }}</td>
-                <td><a href="{% url 'file_explorer:delete' file.uuid %}">Delete</a></td>
+                <td><a href="{% url 'file_share:delete' file.uuid %}">Delete</a></td>
             </tr>
         {% endfor %}
     </tbody>
