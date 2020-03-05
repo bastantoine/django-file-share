@@ -1,0 +1,11 @@
+{% extends 'file_explorer/base.html' %}
+{% block title_page %}Log in{% endblock %}
+{% block body %}
+Please log in<br>
+<form action="{% url 'login' %}{% if next %}?{{next}}{% endif %}" method="post">
+    {% csrf_token %}
+    <input type="text" name="username" id="username"><br/>
+    <input type="password" name="password" id="password">
+    <button type="submit">Log in</button>
+</form>
+{% endblock body %}

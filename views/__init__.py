@@ -10,3 +10,4 @@ from .admin import AdminView, DeleteFileView
 from .download import GetFileView
 from .upload import UploadFileView
 from .home import HomeView
+from .login_logout import LoginView, LogoutView
