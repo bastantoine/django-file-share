@@ -18,7 +18,7 @@ class UploadFileView(BaseView):
         context = {
             'form': UploadFileForm()
         }
-        return render(request, 'file_explorer/upload.html', context=context)
+        return render(request, 'file_share/upload.html', context=context)
 
     def post(self, request):
         form = UploadFileForm(request.POST, request.FILES)
@@ -29,6 +29,6 @@ class UploadFileView(BaseView):
             context = {
                 'uuid': uploaded_file.uuid
             }
-            return render(request, 'file_explorer/upload_successful.html', context=context)
+            return render(request, 'file_share/upload_successful.html', context=context)
         else:
-            return render(request, 'file_explorer/upload_error.html')
+            return render(request, 'file_share/upload_error.html')

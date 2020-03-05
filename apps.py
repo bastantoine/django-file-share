@@ -8,5 +8,5 @@
 
 from django.apps import AppConfig
 
-class FileExplorerConfig(AppConfig):
-    name = 'file_explorer'
+class FileShareConfig(AppConfig):
+    name = 'file_share'

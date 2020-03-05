@@ -20,7 +20,7 @@ from .views import (
     LogoutView
 )
 
-app_name = 'file_explorer'
+app_name = 'file_share'
 
 urlpatterns = [
     path('', HomeView.as_view(), name='home'),
