@@ -14,4 +14,4 @@ from .base import BaseView
 class HomeView(BaseView):
 
     def get(self, request):
-        return render(request, 'file_explorer/home.html')
+        return render(request, 'file_share/home.html')

@@ -20,7 +20,7 @@ class LoginView(BaseView):
             context['next'] = urlencode({
                 'next': request.GET.get('next'),
             })
-        return render(request, 'file_explorer/login.html', context=context)
+        return render(request, 'file_share/login.html', context=context)
 
     def post(self, request):
         if not request.POST:
@@ -29,15 +29,15 @@ class LoginView(BaseView):
         password = request.POST['password']
         user = self.authenticate(request, username, password)
         if not user:
-            return render(request, 'file_explorer/login.html')
+            return render(request, 'file_share/login.html')
         auth.login(request, user)
         if request.GET.get('next'):
             return redirect(request.GET.get('next'))
-        return redirect('file_explorer:home')
+        return redirect('file_share:home')
 
 
 class LogoutView(BaseView):
 
     def get(self, request):
         auth.logout(request)
-        return redirect('file_explorer:home')
+        return redirect('file_share:home')

@@ -30,7 +30,7 @@ class AdminView(ProtectedView):
         context = {
             'all_files': UploadedFile.objects.filter(available__exact=True)
         }
-        return render(request, 'file_explorer/admin.html', context=context)
+        return render(request, 'file_share/admin.html', context=context)
 
 class DeleteFileView(ProtectedView):
 
@@ -61,4 +61,4 @@ class DeleteFileView(ProtectedView):
                 break
             os.rmdir(path)
         uploaded_file.delete()
-        return redirect('file_explorer:admin')
+        return redirect('file_share:admin')
